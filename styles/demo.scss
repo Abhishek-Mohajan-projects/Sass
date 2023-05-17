@@ -1,0 +1,143 @@
+@forward "./../base/reset";
+@forward "./../utilities/typography";
+@use "./../utilities/index";
+
+$header-padding: 2rem;
+$border: 1px solid white;
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $header-padding;
+  background-color: index.$header_bg;
+  color: index.$header_color;
+}
+
+@mixin setFontSize($value) {
+  @if $value == small {
+    font-size: 12px;
+  } @else if $value == medium {
+    font-size: 16px;
+  } @else if $value == large {
+    font-size: 20px;
+  } @else {
+    font-size: none;
+  }
+}
+
+nav {
+  margin: 15px;
+  ul {
+    list-style-type: none;
+    li {
+      display: inline;
+      margin: 0 15px;
+
+      a {
+        display: inline-block;
+        color: white;
+        border-radius: 0.5em;
+        padding: 1rem;
+        @include setFontSize(small);
+      }
+      a:hover {
+        background-color: white;
+        color: black;
+      }
+    }
+  }
+}
+
+@mixin para-style {
+  font-size: 1.1rem;
+  color: white;
+  margin-top: 8px;
+}
+
+.grid-section {
+  @include para-style();
+  padding: 1em;
+}
+
+@mixin para-text($margin, $height, $text) {
+  margin-top: $margin;
+  line-height: $height;
+  text-align: $text;
+}
+
+.grid-text {
+  @include para-text(0.5em, 1em, center);
+}
+
+.row::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.col-3 {
+  float: left;
+  padding: 1em;
+  border: $border;
+}
+
+@for $i from 1 through 6 {
+  .col-#{$i} {
+    width: 100%/6 * $i;
+  }
+}
+
+@media screen and (max-width: 30rem) {
+  .col-3 {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  header {
+    display: block;
+    margin: auto;
+    text-align: center;
+  }
+}
+
+#about {
+  padding: 1rem;
+  max-width: 1280px;
+  color: whitesmoke;
+}
+
+.btn {
+  border: none;
+  font-size: 16px;
+  padding: 1rem;
+  background-color: black;
+  color: white;
+  border-radius: 0.5em;
+}
+
+input[type="button"] {
+  white-space: nowrap;
+}
+
+.download {
+  @extend .btn;
+  margin: 1rem;
+  transition: 0.4s all;
+}
+
+.download:hover {
+  background-color: orange;
+  color: white;
+}
+
+.learn-more {
+  @extend .btn;
+  background-color: greenyellow;
+  color: black;
+}
+
+@each $color in red, green, blue, yellow, purple {
+  .#{$color}-text {
+    color: $color;
+  }
+}

@@ -1,0 +1,32 @@
+html {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 9rem;
+}
+
+html::-webkit-scrollbar {
+  width: 0.8rem;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 5rem;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body {
+  background-color: darkslategray;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+  color: white;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
